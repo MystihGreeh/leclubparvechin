@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Contenu principal -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <!-- Toolbar ajoutée pour l'ActionBar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:navGraph="@navigation/nav_graph"
+            app:defaultNavHost="true"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Menu Drawer -->
+    <LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="300dp"
+    android:layout_gravity="start"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textSize="24sp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/jeux_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jeux" />
+
+    <Button
+        android:id="@+id/mes_cours_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mes Cours" />
+
+    <Button
+        android:id="@+id/calendrier_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calendrier" />
+
+    <Button
+        android:id="@+id/parametres_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paramètres" />
+</LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>

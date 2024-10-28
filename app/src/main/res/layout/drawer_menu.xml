@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/jeux_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jeux" />
+
+    <Button
+        android:id="@+id/mes_cours_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mes Cours" />
+
+    <Button
+        android:id="@+id/calendrier_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calendrier" />
+
+    <Button
+        android:id="@+id/parametres_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paramètres" />
+</LinearLayout>

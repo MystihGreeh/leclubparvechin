@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Options pour le type de jeu -->
+    <string-array name="game_type_options">
+        <item>Par Coups</item>
+        <item>Par Points</item>
+    </string-array>
+
+    <!-- Options pour le terrain -->
+    <string-array name="terrain_options">
+        <item>Chipping</item>
+        <item>Putting</item>
+    </string-array>
+
+    <!-- Noms prédéfinis des joueurs -->
+    <string-array name="player_names">
+        <item>Charlotte</item>
+        <item>Sylvain</item>
+        <item>Christelle</item>
+        <item>Tutur</item>
+    </string-array>
+
+</resources>

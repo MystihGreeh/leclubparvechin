@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Thème personnalisé pour l'application -->
+    <style name="Theme.LeClubParvechin" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Couleurs principales -->
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorPrimaryVariant">@color/teal_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Couleurs secondaires -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Fond de fenêtre -->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!-- ActionBar et Titre de fenêtre -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

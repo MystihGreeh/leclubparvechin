@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/gameListFragment">
+
+    <fragment
+        android:id="@+id/gameListFragment"
+        android:name="com.example.leclubparvechin.view.GameListFragment"
+        android:label="Game List">
+        <!-- Action vers NewGameFragment -->
+        <action
+            android:id="@+id/action_gameListFragment_to_newGameFragment"
+            app:destination="@id/newGameFragment" />
+    </fragment>
+
+    <!-- Fragment pour la création d'un nouveau jeu -->
+
+    <fragment
+        android:id="@+id/newGameFragment"
+        android:name="com.example.leclubparvechin.view.NewGameFragment"
+        android:label="New Game">
+        <!-- Action vers GameListFragment -->
+        <action
+            android:id="@+id/action_newGameFragment_to_gameListFragment"
+            app:destination="@id/gameListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/courseListFragment"
+        android:name="com.example.leclubparvechin.view"
+        android:label="Courses List" >
+        <action
+            android:id="@+id/action_courseListFragment_to_newCourseFragment"
+            app:destination="@id/newCourseFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newCourseFragment"
+        android:name="com.example.yourapp.NewCourseFragment"
+        android:label="New Course" />
+
+</navigation>
