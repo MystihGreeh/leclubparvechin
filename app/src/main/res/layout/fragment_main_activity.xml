@@ -39,44 +39,67 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Menu Drawer -->
-    <LinearLayout
-    android:layout_height="match_parent"
-    android:layout_width="300dp"
-    android:layout_gravity="start"
-    android:orientation="vertical"
-    android:background="@android:color/white">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="200dp"
+        android:layout_gravity="start"
+        android:background="@color/teal_700"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Menu"
-        android:textSize="24sp"
-        android:padding="16dp"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/jeux_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Jeux" />
+        <ImageView
+            android:id="@+id/jeux_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_golf_course_24"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <Button
-        android:id="@+id/mes_cours_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mes Cours" />
+        <ImageView
+            android:id="@+id/cours_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_school_24"
+            app:layout_constraintTop_toBottomOf="@id/jeux_button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <Button
-        android:id="@+id/calendrier_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calendrier" />
+        <ImageView
+            android:id="@+id/calendrier_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_calendar_month_24"
+            app:layout_constraintTop_toBottomOf="@id/cours_button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    <Button
-        android:id="@+id/parametres_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Paramètres" />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/settings_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_settings_24"
+            app:layout_constraintTop_toBottomOf="@id/calendrier_button"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

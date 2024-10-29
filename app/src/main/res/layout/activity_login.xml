@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:text="Se connecter"
         android:padding="12dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
