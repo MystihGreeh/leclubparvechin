@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.compose.runtime.Composable
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.NavHostFragment
@@ -15,6 +14,9 @@ import com.example.leclubparvechin.R
 import com.example.leclubparvechin.repository.GameRepository
 import com.example.leclubparvechin.viewmodel.GameViewModel
 import com.example.leclubparvechin.viewmodel.GameViewModelFactory
+import android.view.View
+import android.widget.ImageView
+import androidx.navigation.NavController
 
 class MainActivity : AppCompatActivity() {
     private val gameViewModel: GameViewModel by viewModels {
@@ -51,7 +53,38 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.open()
         }
 
-        // Ajoutez des actions pour les boutons du Drawer Menu ici
+        // Écouteurs de clic pour les éléments du Drawer Menu
+        setupDrawerMenu(navController)
+    }
+
+    private fun setupDrawerMenu(navController: NavController) {
+        // Récupération des ImageView pour les boutons du drawer
+        val jeuxButton: ImageView = findViewById(R.id.jeux_button)
+        val coursButton: ImageView = findViewById(R.id.cours_button)
+        val calendrierButton: ImageView = findViewById(R.id.calendrier_button)
+        val settingsButton: ImageView = findViewById(R.id.settings_button)
+
+        // Naviguer vers le fragment CourseList lorsque l'utilisateur clique sur l'icône cours
+        coursButton.setOnClickListener {
+            navController.navigate(R.id.courseListFragment) // Remplacez "coursListFragment" par l'ID réel de votre fragment dans le nav_graph
+            drawerLayout.close() // Ferme le drawer après la sélection
+        }
+
+        // Écoutez les autres boutons selon vos besoins
+        jeuxButton.setOnClickListener {
+            navController.navigate(R.id.gameListFragment) // Exemple pour l'icône jeux
+            drawerLayout.close()
+        }
+
+        calendrierButton.setOnClickListener {
+            navController.navigate(R.id.calendrier_button) // Exemple pour l'icône calendrier
+            drawerLayout.close()
+        }
+
+        settingsButton.setOnClickListener {
+            navController.navigate(R.id.settings_button) // Exemple pour l'icône paramètres
+            drawerLayout.close()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -60,6 +93,4 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.fragment_container) as NavHostFragment
         return navHostFragment.navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-
 }

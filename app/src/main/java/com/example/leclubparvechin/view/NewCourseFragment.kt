@@ -1,4 +1,4 @@
-package com.example.leclubparvechin
+package com.example.leclubparvechin.view
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog

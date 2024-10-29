@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/courseListFragment"
-        android:name="com.example.leclubparvechin.view"
+        android:name="com.example.leclubparvechin.view.CourseListFragment"
         android:label="Courses List" >
         <action
             android:id="@+id/action_courseListFragment_to_newCourseFragment"
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/newCourseFragment"
-        android:name="com.example.yourapp.NewCourseFragment"
+        android:name="com.example.leclubparvechin.view.NewCourseFragment"
         android:label="New Course" />
 
 </navigation>
