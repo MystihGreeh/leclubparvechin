@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +16,8 @@
         android:text="Type de Jeu"
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="HardcodedText" />
 
     <!-- Spinner pour sélectionner le type de jeu -->
     <Spinner
@@ -68,15 +70,42 @@
                 android:text="Joueurs" />
 
             <!-- Colonnes pour les trous -->
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T1" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T2" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T3" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T4" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T5" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T6" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T7" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T8" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="T9" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T6" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T7" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T9" />
         </TableRow>
 
         <!-- Lignes de saisie pour les joueurs -->
@@ -89,10 +118,10 @@
 
             <!-- Cases pour les scores de chaque trou -->
             <EditText
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                tools:ignore="LabelFor" />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

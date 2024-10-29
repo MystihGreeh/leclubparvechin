@@ -11,8 +11,7 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
 
-        <!-- Fond de fenêtre -->
-        <item name="android:windowBackground">@color/white</item>
+
 
         <!-- ActionBar et Titre de fenêtre -->
         <item name="windowActionBar">false</item>
