@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         val jeuxButton: ImageView = findViewById(R.id.jeux_button)
         val coursButton: ImageView = findViewById(R.id.cours_button)
         val calendrierButton: ImageView = findViewById(R.id.calendrier_button)
+        val golfRulesButton: ImageView = findViewById(R.id.golf_rules_button)
         val settingsButton: ImageView = findViewById(R.id.settings_button)
 
         // Naviguer vers le fragment CourseList lorsque l'utilisateur clique sur l'icône cours
@@ -78,6 +79,11 @@ class MainActivity : AppCompatActivity() {
 
         calendrierButton.setOnClickListener {
             navController.navigate(R.id.calendrier_button) // Exemple pour l'icône calendrier
+            drawerLayout.close()
+        }
+
+        golfRulesButton.setOnClickListener{
+            navController.navigate(R.id.pdfViewerFragment)
             drawerLayout.close()
         }
 

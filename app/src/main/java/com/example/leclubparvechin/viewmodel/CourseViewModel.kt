@@ -1,28 +1,42 @@
-package com.example.leclubparvechin.viewmodel
-
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.leclubparvechin.repository.CourseRepository
-import com.example.yourapp.Course
+import com.example.leclubparvechin.model.course.Course
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.launch
 
 class CourseViewModel(private val courseRepository: CourseRepository) : ViewModel() {
 
-    // Liste des cours
-    val courses: LiveData<List<Course>> = courseRepository.fetchCourses() // Observez les changements directement depuis le repository
+    private val _courses = MutableLiveData<List<Course>>()
+    val courses: LiveData<List<Course>> get() = _courses
 
     init {
-        // Charger les cours au démarrage (dans ce cas, c'est déjà géré par l'init du repository)
+        fetchUpcomingCourses() // Charger les cours à la création du ViewModel
     }
 
-    fun addCourse(teacher: String, theme: String, date: String, time: String) {
-        // Ajout d'un nouveau cours
-        val newCourse = Course(teacher, theme, date, time)
+    private fun fetchUpcomingCourses() {
+        val currentDateTime = courseRepository.getCurrentDateTime()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid // Récupérer l'UID de l'utilisateur connecté
 
+        if (userId != null) { // Assurez-vous que l'utilisateur est connecté
+            viewModelScope.launch {
+                // Utiliser la méthode avec paramètres pour récupérer les cours
+                courseRepository.fetchCoursesWithParams(currentDateTime, userId).addOnSuccessListener { result: QuerySnapshot ->
+                    val coursesList = result.toObjects(Course::class.java)
+                    _courses.value = coursesList // Met à jour la LiveData
+                }.addOnFailureListener { exception ->
+                    // Gérer l’erreur si nécessaire
+                    exception.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun addCourse(course: Course) {
         viewModelScope.launch {
-            courseRepository.addCourse(newCourse) // Ajoute le cours dans le repository
-            // Pas besoin de recharger les cours, car LiveData sera mis à jour automatiquement
+            courseRepository.addCourse(course) // Appel à la méthode d'ajout de cours
         }
     }
 }

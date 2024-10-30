@@ -50,7 +50,7 @@
 
     <!-- Button pour choisir la date -->
     <Button
-        android:id="@+id/datePickerButton"
+        android:id="@+id/newcourseDatePickerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Choisir la Date"
@@ -65,13 +65,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Heure"
-        app:layout_constraintTop_toBottomOf="@id/datePickerButton"
+        app:layout_constraintTop_toBottomOf="@id/newcourseDatePickerButton"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="16dp"/>
 
     <!-- Button pour choisir l'heure -->
     <Button
-        android:id="@+id/timePickerButton"
+        android:id="@+id/newCourseTimePickerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Choisir l'Heure"
@@ -85,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Ajouter le Cours"
-        app:layout_constraintTop_toBottomOf="@id/timePickerButton"
+        app:layout_constraintTop_toBottomOf="@id/newCourseTimePickerButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

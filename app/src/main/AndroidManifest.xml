@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_app_pastel"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LeClubParvechin">
+        android:theme="@style/Theme.LeClubParvechin"
+        >
 
 
         <activity
@@ -31,5 +32,9 @@
             android:name=".view.LoginActivity"
             android:theme="@style/Theme.LeClubParvechin" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="ManifestOrder" />
+
 
 </manifest>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/gameListFragment">
 
@@ -15,7 +16,6 @@
     </fragment>
 
     <!-- Fragment pour la création d'un nouveau jeu -->
-
     <fragment
         android:id="@+id/newGameFragment"
         android:name="com.example.leclubparvechin.view.NewGameFragment"
@@ -38,6 +38,15 @@
     <fragment
         android:id="@+id/newCourseFragment"
         android:name="com.example.leclubparvechin.view.NewCourseFragment"
-        android:label="New Course" />
+        android:label="New Course" >
+        <action
+            android:id="@+id/action_newCourseFragment_to_courseListFragment"
+            app:destination="@id/courseListFragment" /> <!-- Correction ici -->
+    </fragment>
 
+    <fragment
+        android:id="@+id/pdfViewerFragment"
+        android:name="com.example.leclubparvechin.view.RulesFragment"
+        android:label="PDF Viewer"
+        tools:layout="@layout/fragment_rules" />
 </navigation>

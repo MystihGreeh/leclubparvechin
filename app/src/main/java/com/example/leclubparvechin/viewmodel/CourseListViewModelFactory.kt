@@ -1,8 +1,9 @@
 package com.example.leclubparvechin.viewmodel
 
+import CourseRepository
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.leclubparvechin.repository.CourseRepository
+
 
 
 class CourseListViewModelFactory(private val repository: CourseRepository) : ViewModelProvider.Factory {

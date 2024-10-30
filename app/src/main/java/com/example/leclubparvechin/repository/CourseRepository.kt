@@ -1,36 +1,70 @@
-package com.example.leclubparvechin.repository
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.yourapp.Course
+import com.example.leclubparvechin.model.course.Course
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class CourseRepository {
 
-    private val courseList = mutableListOf<Course>()
-
-    // MutableLiveData pour émettre la liste des cours
-    private val _courses = MutableLiveData<List<Course>>(courseList)
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance() // Instance de Firestore
+    private val _courses = MutableLiveData<List<Course>>()
     val courses: LiveData<List<Course>> get() = _courses
 
-    // Simule une base de données ou un service
-    init {
-        // Ajout de quelques cours par défaut
-        courseList.add(Course("Charlotte", "Bunker", "2024-10-29", "10:00"))
-        courseList.add(Course("Greg", "Driving", "2024-10-30", "14:00"))
-        // Émettez la liste initiale
-        _courses.value = courseList
+    // Méthode pour récupérer les cours avec des paramètres (pour le ViewModel)
+    fun fetchCoursesWithParams(currentDateTime: String, userId: String): Task<QuerySnapshot> {
+        return db.collection("courses")
+            .whereEqualTo("createdBy", userId)  // Filtrer par utilisateur actif
+            .whereGreaterThan("date", currentDateTime) // Filtrer pour les cours futurs
+            .orderBy("date", Query.Direction.ASCENDING) // Trier les cours par date
+            .get()
     }
 
-    // Récupérer tous les cours
-    fun fetchCourses(): LiveData<List<Course>> {
-        return courses // Retourne LiveData contenant la liste des cours
+    // Nouvelle méthode pour obtenir les cours en tant que LiveData
+    fun fetchCoursesLiveData(): LiveData<List<Course>> {
+        val liveDataCourses = MutableLiveData<List<Course>>()
+        val currentDateTime = getCurrentDateTime()
+        val userId = FirebaseAuth.getInstance().currentUser?.uid // Récupérer l'UID de l'utilisateur connecté
+
+        if (userId != null) { // Assurez-vous que l'utilisateur est connecté
+            db.collection("courses")
+                .whereEqualTo("createdBy", userId) // Filtrer par utilisateur actif
+                .whereGreaterThan("date", currentDateTime) // Filtrer pour les cours futurs
+                .orderBy("date", Query.Direction.ASCENDING) // Trier les cours par date
+                .get()
+                .addOnSuccessListener { result ->
+                    val coursesList = result.toObjects(Course::class.java)
+                    liveDataCourses.value = coursesList // Met à jour la LiveData avec les résultats
+                }
+                .addOnFailureListener { exception ->
+                    // Gérer l’erreur si nécessaire
+                    exception.printStackTrace()
+                }
+        }
+
+        return liveDataCourses
     }
 
-    // Ajouter un nouveau cours
-    suspend fun addCourse(course: Course) {
-        // Ajoutez le cours à la liste
-        courseList.add(course)
-        // Émettez la nouvelle liste des cours
-        _courses.value = courseList
+    // Fonction pour ajouter un cours
+    fun addCourse(course: Course): Task<Void> {
+        val user = auth.currentUser
+        val newCourseRef = db.collection("courses").document()
+
+        // Création d'une copie du cours avec un identifiant unique et l'utilisateur
+        val courseWithId = course.copy(id = newCourseRef.id, createdBy = user?.uid ?: "")
+
+        return newCourseRef.set(courseWithId)
+    }
+
+    // Utilitaire pour obtenir la date actuelle au format requis
+    fun getCurrentDateTime(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 }

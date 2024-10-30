@@ -1,20 +1,20 @@
 package com.example.leclubparvechin.view
 
+import CourseRepository
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.leclubparvechin.R
-import com.example.leclubparvechin.repository.CourseRepository
+import com.example.leclubparvechin.adapters.CourseAdapter
 import com.example.leclubparvechin.viewmodel.CourseListViewModel
 import com.example.leclubparvechin.viewmodel.CourseListViewModelFactory
+import com.example.leclubparvechin.model.course.Course // Assurez-vous d'importer la bonne classe Course
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CourseListFragment : Fragment() {
@@ -29,7 +29,7 @@ class CourseListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_course_list, container, false)
 
         // Initialisation du CourseRepository et du ViewModel
-        val courseRepository = CourseRepository() // Assurez-vous que votre CourseRepository est accessible ici
+        val courseRepository = CourseRepository()
         val factory = CourseListViewModelFactory(courseRepository)
         courseViewModel = ViewModelProvider(this, factory).get(CourseListViewModel::class.java)
 
@@ -41,7 +41,7 @@ class CourseListFragment : Fragment() {
 
         // Observer les cours
         courseViewModel.courses.observe(viewLifecycleOwner) { courses ->
-            courseAdapter.setCourses(courses)
+            courseAdapter.setCourses(courses) // Assurez-vous que "courses" est de type List<Course>
         }
 
         // Gérer le clic sur le bouton "Ajouter un cours"

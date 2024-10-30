@@ -21,4 +21,22 @@
         <item>Tutur</item>
     </string-array>
 
+    <!-- Options pour le terrain -->
+    <string-array name="courses_theme">
+        <item>Bunker</item>
+        <item>Chipping</item>
+        <item>Driving</item>
+        <item>Attaque de green</item>
+        <item>Parcours</item>
+        <item>Putting</item>
+        <item>Vidéo</item>
+        <item>Wedging</item>
+    </string-array>
+
+    <!-- Noms des professeurs -->
+    <string-array name="teacher_names">
+        <item>Charlotte</item>
+        <item>Greg</item>
+    </string-array>
+
 </resources>

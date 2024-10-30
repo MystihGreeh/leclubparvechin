@@ -85,6 +85,13 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("androidx.fragment:fragment-ktx:1.8.4")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0-rc01")
+
+    // Firebase Firestore
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.5.0")
+
+
+
+
 }
 
 // Si vous souhaitez ajouter d'autres dépendances, vous pouvez le faire ici.

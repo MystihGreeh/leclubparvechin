@@ -1,4 +1,4 @@
-package com.example.leclubparvechin.view
+package com.example.leclubparvechin.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.leclubparvechin.R
-import com.example.yourapp.Course
+import com.example.leclubparvechin.model.course.Course // Assurez-vous que c'est la bonne importation
 
 class CourseAdapter : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
