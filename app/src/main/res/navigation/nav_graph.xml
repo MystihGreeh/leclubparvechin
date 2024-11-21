@@ -45,8 +45,31 @@
     </fragment>
 
     <fragment
+        android:id="@+id/holeListFragment"
+        android:name="com.example.leclubparvechin.view.HoleListFragment"
+        android:label="Hole List"
+        tools:layout="@layout/fragment_hole_list">
+        <!-- Action vers NewGameFragment avec un argument "holeNumber" -->
+        <action
+            android:id="@+id/action_holeListFragment_to_newGameFragment"
+            app:destination="@id/newGameFragment">
+            <argument
+                android:name="holeNumber"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
         android:id="@+id/pdfViewerFragment"
         android:name="com.example.leclubparvechin.view.RulesFragment"
         android:label="PDF Viewer"
         tools:layout="@layout/fragment_rules" />
+
+    <action
+        android:id="@+id/action_gameListFragment_to_holeListFragment"
+        app:destination="@id/holeListFragment" />
+
+    <action
+        android:id="@+id/action_holeListFragment_to_newGameFragment"
+        app:destination="@id/newGameFragment" />
 </navigation>

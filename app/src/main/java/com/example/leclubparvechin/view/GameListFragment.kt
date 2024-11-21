@@ -36,7 +36,6 @@ class GameListFragment : Fragment() {
         gameViewModel = ViewModelProvider(this, factory).get(GameViewModel::class.java)
 
 
-
         // Configuration de la RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerview)
         gameAdapter = GameAdapter()
@@ -51,11 +50,9 @@ class GameListFragment : Fragment() {
         // Gérer le clic sur le bouton "Nouvelle Partie"
         val addGameButton: FloatingActionButton = view.findViewById(R.id.fab_add_game)
         addGameButton.setOnClickListener {
-            findNavController().navigate(R.id.action_gameListFragment_to_newGameFragment)
-
+            findNavController().navigate(R.id.action_gameListFragment_to_holeListFragment)
 
     }
-
         return view
     }
 }

@@ -29,7 +29,7 @@ class NewGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_new_game, container, false)
+        val view = inflater.inflate(R.layout.fragment_current_hole, container, false)
 
         // Initialisation des listes de joueurs
         playerNames = resources.getStringArray(R.array.player_names).toList()
@@ -38,43 +38,6 @@ class NewGameFragment : Fragment() {
         // Initialisation du GameViewModel
         val gameRepository = GameRepository()
         gameViewModel = ViewModelProvider(this, GameViewModelFactory(gameRepository)).get(GameViewModel::class.java)
-
-        // Configuration des menus déroulants et du tableau de scores
-        val gameTypeSpinner: Spinner = view.findViewById(R.id.spinner_game_type)
-        val terrainSpinner: Spinner = view.findViewById(R.id.spinner_terrain)
-
-        // Conversion des valeurs du Spinner en GameType et Terrain
-        val selectedGameTypeString = gameTypeSpinner.selectedItem.toString()
-        val selectedTerrainString = terrainSpinner.selectedItem.toString()
-
-        // Convertir les String en GameType et Terrain
-        val selectedGameType = try {
-            GameType.valueOf(selectedGameTypeString)
-        } catch (e: IllegalArgumentException) {
-            GameType.DEFAULT // Utilisez une valeur par défaut ou gérez l'exception
-        }
-
-        val selectedTerrain = try {
-            Terrain.valueOf(selectedTerrainString)
-        } catch (e: IllegalArgumentException) {
-            Terrain.DEFAULT // Utilisez une valeur par défaut ou gérez l'exception
-        }
-
-        // Gérer le clic sur le bouton "Valider"
-        val validateButton: Button = view.findViewById(R.id.btn_validate)
-        validateButton.setOnClickListener {
-            // Créer l'objet Game
-            val game = Game(
-                id = System.currentTimeMillis().toString(),
-                type = selectedGameType,
-                terrain = selectedTerrain,
-                playersScores = playerScores,
-                comment = "Test",
-                date = Date().time
-            )
-            gameViewModel.addGame(game)
-            view.findNavController().navigate(R.id.action_newGameFragment_to_gameListFragment)
-        }
 
         return view
     }
